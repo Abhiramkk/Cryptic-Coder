@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cryptic Code Generator</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #00ffcc;
+    }
+
+    textarea {
+      width: 80%;
+      max-width: 600px;
+      height: 100px;
+      background-color: #1a1a1a;
+      color: #00ffcc;
+      border: 2px solid #00ffcc;
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 1.2rem;
+      resize: none;
+    }
+
+    .output {
+      margin-top: 2rem;
+      width: 80%;
+      max-width: 600px;
+      background-color: #121212;
+      color: #fff;
+      border: 2px dashed #444;
+      padding: 1rem;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      font-size: 1.2rem;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔐 Cryptic Code Generator</h1>
+  <textarea id="inputText" placeholder="Type your message here..."></textarea>
+  <div class="output" id="outputText">Your cryptic message will appear here...</div>
+
+  <script>
+    const crypticMap = {
+      a: "@", b: "8", c: "(", d: "|)", e: "3", f: "ƒ", g: "9",
+      h: "▌▬▌", i: "!", j: "_|", k: "|<", l: "1", m: "/\\/\\",
+      n: "|\\|", o: "0", p: "|°", q: "(_,)", r: "Я", s: "$",
+      t: "-|-", u: "(_)", v: "\\/", w: "\\/\\/", x: "><", y: "`/", z: "2"
+    };
+
+    const input = document.getElementById('inputText');
+    const output = document.getElementById('outputText');
+
+    input.addEventListener('input', () => {
+      const raw = input.value.toLowerCase();
+      const translated = raw.split('').map(c => crypticMap[c] || c).join('');
+      output.textContent = translated || 'Your cryptic message will appear here...';
+    });
+  </script>
+</body>
+</html>
